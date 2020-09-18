@@ -1,0 +1,13 @@
+<h1><%= @creations.nom %></h1>
+<p><%= @creations.description %></p>
+<p><%= @creations.difficulte %></p>
+<% if @creations.avatar.attached? %>
+  <img src="<%= (url_for(@creations.avatar)) %>"  />
+    <% else %>
+  <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"  />
+<% end %>
+<%= link_to 'Retour', creations_path %>
+<% if user_signed_in? %>
+  <%= link_to 'Delete', [:creation], method: :delete %>
+  <%= link_to 'Change', edit_creation_path %>
+<% end %>
